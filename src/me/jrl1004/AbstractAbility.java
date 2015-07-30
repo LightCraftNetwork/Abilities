@@ -5,9 +5,9 @@ import org.bukkit.entity.Player;
 
 public abstract class AbstractAbility {
 
-	private Material abilityMaterial;
+	protected Material abilityMaterial;
 
-	private boolean requireOP = false;
+	protected boolean requireOP = false;
 
 	public AbstractAbility() {
 		this.abilityMaterial = Material.AIR;
