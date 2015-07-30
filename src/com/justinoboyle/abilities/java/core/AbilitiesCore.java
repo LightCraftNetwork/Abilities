@@ -1,8 +1,30 @@
 package com.justinoboyle.abilities.java.core;
-public class AbilitiesCore {
 
-    public AbilitiesCore() {
-        // TODO Auto-generated constructor stub
+import java.util.Set;
+
+import org.bukkit.plugin.java.JavaPlugin;
+import org.reflections.Reflections;
+
+public class AbilitiesCore extends JavaPlugin {
+
+    private static final String[] classpaths = { "com.justinoboyle", "me.jrl1004" };
+
+    @Override
+    public void onEnable() {
+        for (String s : classpaths)
+            initClasses(s);
+    }
+
+    private void initClasses(String origin) {
+        Reflections reflections = new Reflections(origin);
+        Set<Class<?>> types = reflections.getTypesAnnotatedWith(InitImplementation.class);
+        for (Class c : types) {
+            try {
+                c.newInstance();
+            } catch (Exception e) {
+                System.err.println("[SEVERE] Could not instantiate class " + c.getName());
+            }
+        }
     }
 
 }
