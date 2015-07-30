@@ -11,7 +11,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import com.justinoboyle.abilities.java.core.AbilitiesCore;
 import com.justinoboyle.abilities.java.core.InitImplementation;
 
-@InitImplementation
 public class AbilityManager implements Listener
 {
 	private static AbilityManager manager;
