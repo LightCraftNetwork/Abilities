@@ -6,11 +6,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 
 public class AbilitiesCore extends JavaPlugin {
+    
+    private static AbilitiesCore instance;
 
     private static final String[] classpaths = { "com.justinoboyle", "me.jrl1004" };
 
     @Override
     public void onEnable() {
+        instance = this;
         for (String s : classpaths)
             initClasses(s);
     }
@@ -25,6 +28,10 @@ public class AbilitiesCore extends JavaPlugin {
                 System.err.println("[SEVERE] Could not instantiate class " + c.getName());
             }
         }
+    }
+    
+    public static AbilitiesCore getInstance() { 
+        return instance;
     }
 
 }
