@@ -37,6 +37,7 @@ public class AbilityManager implements Listener
 		if (event.getPlayer().isSneaking()) return;
 		if (!event.getAction().toString().contains("RIGHT")) return;
 		for (AbstractAbility abb : abilities) {
+			if (abb.requireOP() && !event.getPlayer().isOp()) continue;
 			if (abb.isItem(event.getItem()))
 				abb.onUse(event.getPlayer());
 		}
@@ -46,6 +47,7 @@ public class AbilityManager implements Listener
 	public void onPlace(BlockPlaceEvent event) {
 		if (event.getPlayer().isSneaking()) return;
 		for (AbstractAbility abb : abilities) {
+			if (abb.requireOP() && !event.getPlayer().isOp()) continue;
 			if (abb.isItem(event.getBlockPlaced().getType()))
 				abb.onUse(event.getPlayer());
 		}
