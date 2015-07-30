@@ -17,7 +17,7 @@ public class AbilityBlazePowder extends AbstractAbility {
 
 	public AbilityBlazePowder() {
 		super(Material.BLAZE_POWDER);
-		this.requireOP = false;
+		this.requireOP = true;
 		this.displayName = ChatColor.GOLD + "Afterburner";
 		this.lore = new String[] {ChatColor.RED + "420 Blaze It"};
 	}
@@ -29,6 +29,7 @@ public class AbilityBlazePowder extends AbstractAbility {
 			Block b = iterator.next();
 			b.getWorld().playEffect(b.getLocation(), Effect.MOBSPAWNER_FLAMES, null);
 			b.getWorld().strikeLightning(b.getLocation());
+			if(b.getType().isSolid()) break;
 		}
 		super.onUse(player);
 	}

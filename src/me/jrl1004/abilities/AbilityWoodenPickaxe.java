@@ -18,10 +18,11 @@ public class AbilityWoodenPickaxe extends AbstractAbility {
 
 	@Override
 	public void onUse(Player player) {
-		for (int x = -2; x <= 2; x++) {
+		for (int x = 0; x <= 5; x++) {
 			for (int y = -2; y <= 2; y++) {
 				for (int z = -2; z <= 2; z++) {
 					Location loc = player.getLocation().getBlock().getLocation().add(x, y, z);
+					if (loc.getBlock().getType() == Material.BEDROCK) continue;
 					loc.getBlock().breakNaturally();
 					loc.getWorld().playEffect(loc, Effect.MOBSPAWNER_FLAMES, null);
 				}

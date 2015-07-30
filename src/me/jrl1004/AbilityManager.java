@@ -9,7 +9,6 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import com.justinoboyle.abilities.java.core.AbilitiesCore;
-import com.justinoboyle.abilities.java.core.InitImplementation;
 
 public class AbilityManager implements Listener
 {
